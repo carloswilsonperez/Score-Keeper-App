@@ -6,10 +6,11 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
-    public static final int POINTS_FOR_3_POINT_SHOT = 3;
-    public static final int POINTS_FOR_2_POINT_SHOT = 2;
-    public static final int POINTS_FOR_FREE_THROW = 1;
+    // Constants for valid scores
+    public static final int TOUCH_DOWN = 6;
+    public static final int FIELD_GOAL = 3;
+    public static final int SAFETY = 2;
+    public static final int EXTRA_POINT = 1;
 
     private int[] points = {0, 0};  // Tracks the points won by each Team
     TextView scoreViewA;
@@ -28,11 +29,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * Adds 6 points to either Team
+     */
+    public void sixPointsForTeam(View view) {
+        int viewId = view.getId();
+        addScores(viewId, TOUCH_DOWN);
+    }
+
+    /**
      * Adds 3 points to either Team
      */
     public void threePointsForTeam(View view) {
         int viewId = view.getId();
-        addScores(viewId, POINTS_FOR_3_POINT_SHOT);
+        addScores(viewId, FIELD_GOAL);
     }
 
     /**
@@ -40,22 +49,22 @@ public class MainActivity extends AppCompatActivity {
      */
     public void twoPointsForTeam(View view) {
         int viewId = view.getId();
-        addScores(viewId, POINTS_FOR_2_POINT_SHOT);
+        addScores(viewId, SAFETY);
     }
 
     /**
      * Adds 1 point to either Team
      */
-    public void freeThrowForTeam(View view) {
+    public void onePointForTeam(View view) {
         int viewId = view.getId();
-        addScores(viewId, POINTS_FOR_FREE_THROW);
+        addScores(viewId, EXTRA_POINT);
     }
 
     /**
      * Adds the score and displays the updated score
      */
     public void addScores(int viewId, int score) {
-        if (viewId == R.id.three_points_for_a || viewId == R.id.two_points_for_a || viewId == R.id.free_points_for_a) {
+        if (viewId == R.id.six_points_for_a || viewId == R.id.three_points_for_a || viewId == R.id.two_points_for_a || viewId == R.id.one_point_for_a) {
             points[0] += score;
             displayForTeam(points, 0);
         } else {

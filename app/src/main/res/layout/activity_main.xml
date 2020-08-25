@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:padding="16dp"
+    android:padding="@dimen/margin_bottom"
+    android:background="@color/background_color"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        android:gravity="center"
+        android:text="@string/title"
+        android:textColor="@color/button_background_reset"
+        android:textSize="@dimen/title_size"
+        android:textStyle="bold"
+        android:textAlignment="center" />
+
     <LinearLayout
+        android:id="@+id/controls"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/title"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -22,57 +37,73 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Team A"
-                android:textAppearance="?android:textAppearanceMedium" />
+                android:text="@string/teamA"
+                android:textSize="@dimen/team_label_size"
+                android:textColor="@color/button_background"
+                />
 
             <TextView
                 android:id="@+id/team_a_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="@dimen/margin_bottom"
                 android:layout_marginTop="16dp"
                 android:text="0"
                 android:fontFamily="sans-serif-light"
                 android:textColor="@android:color/black"
-                android:textSize="72sp" />
+                android:textSize="@dimen/score_size" />
+
+            <Button
+                android:id="@+id/six_points_for_a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:background="@color/button_background"
+                android:onClick="sixPointsForTeam"
+                android:padding="@dimen/button_padding"
+                android:text="@string/touch_down"
+                android:textColor="@color/button_foreground" />
 
             <Button
                 android:id="@+id/three_points_for_a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@color/buttonBackground"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:background="@color/button_background"
                 android:onClick="threePointsForTeam"
-                android:padding="20dp"
-                android:text="+3 Points" />
+                android:padding="@dimen/button_padding"
+                android:text="@string/field_goal"
+                android:textColor="@color/button_foreground" />
 
             <Button
                 android:id="@+id/two_points_for_a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@color/buttonBackground"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:background="@color/button_background"
                 android:onClick="twoPointsForTeam"
-                android:padding="20dp"
-                android:text="+2 Points" />
+                android:padding="@dimen/button_padding"
+                android:text="@string/safety"
+                android:textColor="@color/button_foreground" />
 
             <Button
-                android:id="@+id/free_points_for_a"
+                android:id="@+id/one_point_for_a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/buttonBackground"
-                android:onClick="freeThrowForTeam"
-                android:padding="20dp"
-                android:text="Free Throw" />
+                android:background="@color/button_background"
+                android:onClick="onePointForTeam"
+                android:padding="@dimen/button_padding"
+                android:text="@string/extra_point"
+                android:textColor="@color/button_foreground" />
         </LinearLayout>
 
         <View
-            android:layout_width="1dp"
-            android:layout_height="400dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:background="#CCCCCC" />
+            android:layout_width="@dimen/separator_width"
+            android:layout_height="@dimen/separator_height"
+            android:layout_marginLeft="@dimen/separator_margin"
+            android:layout_marginRight="@dimen/separator_margin"
+            android:background="@color/separator_color" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -84,50 +115,64 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Team B"
-                android:textAppearance="?android:textAppearanceMedium" />
+                android:text="@string/teamB"
+                android:textSize="@dimen/team_label_size"
+                android:textColor="@color/button_background" />
 
             <TextView
                 android:id="@+id/team_b_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="@dimen/margin_bottom"
                 android:layout_marginTop="16dp"
                 android:text="0"
-
                 android:fontFamily="sans-serif-light"
                 android:textColor="@android:color/black"
-                android:textSize="72sp" />
+                android:textSize="@dimen/score_size" />
+
+            <Button
+                android:id="@+id/six_points_for_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:background="@color/button_background"
+                android:onClick="sixPointsForTeam"
+                android:padding="@dimen/button_padding"
+                android:text="@string/touch_down"
+                android:textColor="@color/button_foreground" />/>
 
             <Button
                 android:id="@+id/three_points_for_b"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@color/buttonBackground"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:background="@color/button_background"
                 android:onClick="threePointsForTeam"
-                android:padding="20dp"
-                android:text="+3 Points" />
+                android:padding="@dimen/button_padding"
+                android:text="@string/field_goal"
+                android:textColor="@color/button_foreground" />/>
 
             <Button
                 android:id="@+id/two_points_for_b"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@color/buttonBackground"
+                android:layout_marginBottom="@dimen/margin_bottom"
+                android:background="@color/button_background"
                 android:onClick="twoPointsForTeam"
-                android:padding="20dp"
-                android:text="+2 Points" />
+                android:padding="@dimen/button_padding"
+                android:text="@string/safety"
+                android:textColor="@color/button_foreground" />
 
             <Button
-                android:id="@+id/free_points_for_b"
+                android:id="@+id/one_point_for_b"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/buttonBackground"
-                android:onClick="freeThrowForTeam"
-                android:padding="20dp"
-                android:text="Free Throw" />
+                android:background="@color/button_background"
+                android:onClick="onePointForTeam"
+                android:padding="@dimen/button_padding"
+                android:text="@string/extra_point"
+                android:textColor="@color/button_foreground" />
         </LinearLayout>
     </LinearLayout>
 
@@ -136,8 +181,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:background="@color/buttonBackground"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        android:background="@color/button_background_reset"
         android:onClick="resetScores"
-        android:text="Reset" />
+        android:text="@string/reset"
+        android:textColor="@color/button_foreground" />
 </RelativeLayout>
